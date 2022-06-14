@@ -1,0 +1,72 @@
+{  
+    "version":1,  
+    "disable_existing_loggers":false,
+    "formatters":{  
+        "simple":{  
+            "format":"%(asctime)s - %(name)s - %(levelname)s - %(message)s"  
+        }  
+    },  
+    "handlers":{  
+        "console":{  
+            "class":"logging.StreamHandler",  
+            "level":"DEBUG",  
+            "formatter":"simple",  
+            "stream":"ext://sys.stdout"  
+        },
+        "debug_file_handler_BySize":{  
+            "class":"logging.handlers.RotatingFileHandler",  
+            "level":"DEBUG",  
+            "formatter":"simple",  
+            "filename":"log/logger/serve_log.debug",
+            "maxBytes":104857600,
+            "backupCount":100,
+            "encoding":"utf8"
+        },   
+        "info_file_handler_BySize":{  
+            "class":"logging.handlers.RotatingFileHandler",  
+            "level":"INFO",  
+            "formatter":"simple",  
+            "filename":"log/logger/serve_log.info",
+            "maxBytes":104857600,
+            "backupCount":100,
+            "encoding":"utf8"
+        },
+        "warning_file_handler_BySize": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "WARNING",
+            "formatter":"simple",  
+            "filename":"log/logger/serve_log.warn",
+            "maxBytes":104857600,
+            "backupCount":100,
+            "encoding":"utf8"
+        },    
+        "error_file_handler_BySize":{  
+            "class":"logging.handlers.RotatingFileHandler",  
+            "level":"ERROR",  
+            "formatter":"simple",  
+            "filename":"log/logger/serve_log.error",
+            "maxBytes":104857600,
+            "backupCount":100,
+            "encoding":"utf8"
+        }
+    },
+    "loggers": {
+        "semr_pre": {
+            "level": "INFO",
+            "handlers": [
+                "console",
+                "debug_file_handler_BySize",
+                "info_file_handler_BySize",
+                "warning_file_handler_BySize",
+                "error_file_handler_BySize"
+            ],
+            "propagate": 0
+        }
+    },
+    "root":{  
+        "level":"INFO",
+        "handlers":[
+                "warning_file_handler_BySize",
+                "error_file_handler_BySize"]
+    }  
+}
